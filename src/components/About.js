@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle, setStyle] = useState({
+export default function About(props) {
+  /* const [myStyle, setStyle] = useState({
     color: "black",
     backgroundColor: "white",
-  });
+  }); */
 
-  const[btnText, setBtnText] =useState("Enable Dark Theme")
+  let myStyle = {
+    color: props.mode==='dark'?'white':'black',
+    backgroundColor: props.mode==='dark'?'#212529':'white'
+  }
 
-  const toggleTheme = () => {
+  // const[btnText, setBtnText] =useState("Enable Dark Theme")
+
+  /* const toggleTheme = () => {
     if (myStyle.color === "black") {
       setStyle({
         color: "white",
@@ -22,9 +27,9 @@ export default function About() {
       });
       setBtnText("Enable Dark Theme");
     }
-  };
+  }; */
   return (
-    <div className="container" style={myStyle}>
+    <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
         <h1>About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -121,13 +126,13 @@ export default function About() {
           </div>
         </div>
       </div>
-      <button
+      {/* <button
         type="button"
         className="btn btn-primary my-3"
         onClick={toggleTheme}
       >
         {btnText}
-      </button>
+      </button> */}
     </div>
   );
 }
